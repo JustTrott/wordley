@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <link rel="stylesheet" href="main.css">
+    <link rel="icon" href="favicon.ico">
+    <title>Wordley</title>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <header id="header">
+        <h1 id="main-header">Wordley</h1>
+    </header>
+    <section id="content">
+        <div id="guide-modal">
+            <div class="modal-header">
+                <div class="description">
+                    <h2 class="main-heading">How to play?</h2>
+                    <p>Guess the secret <strong class="bold-uppercase">word</strong> in six tries.</p>
+                    <p>Each guess must be a valid five-letter word. Hit the enter button to submit.</p>
+                    <p>After each guess, the color of the tiles will change to show how close your guess was to the
+                        word.</p>
+                </div>
+                <button class="close-button">&times;</button>
+            </div>
+            <div class="examples">
+                <h2>Examples</h2>
+                <div class="example-row">
+                    <div class="board-tile used-tile example-tile">t</div>
+                    <div class="board-tile used-tile example-tile">r</div>
+                    <div class="board-tile used-tile example-tile">a</div>
+                    <div class="board-tile used-tile example-tile">i</div>
+                    <div class="board-tile used-tile example-tile exact-letter">n</div>
+                </div>
+                <div class="example-description">The letter <span class="bold-uppercase">N</span> is in the word and in
+                    the correct spot.</div>
+                <div class="example-row">
+                    <div class="board-tile used-tile example-tile">e</div>
+                    <div class="board-tile used-tile example-tile">a</div>
+                    <div class="board-tile used-tile example-tile">g</div>
+                    <div class="board-tile used-tile example-tile has-letter">l</div>
+                    <div class="board-tile used-tile example-tile">e</div>
+                </div>
+                <div class="example-description">The letter <span class="bold-uppercase">l</span> is in the word, but in
+                    the wrong spot.</div>
+                <div class="example-row">
+                    <div class="board-tile used-tile example-tile no-letter">s</div>
+                    <div class="board-tile used-tile example-tile">m</div>
+                    <div class="board-tile used-tile example-tile">a</div>
+                    <div class="board-tile used-tile example-tile">r</div>
+                    <div class="board-tile used-tile example-tile">t</div>
+                </div>
+                <div class="example-description">The letter <span class="bold-uppercase">S</span> is not in the word.
+                </div>
+            </div>
+        </div>
+        <div id="game-board"></div>
+        <div id="result-message"></div>
+        <div id="keyboard">
+            <div class="keyboard-row">
+                <button onclick="pressKey('q')" class="keyboard-button" id="q">q</button>
+                <button onclick="pressKey('w')" class="keyboard-button" id="w">w</button>
+                <button onclick="pressKey('e')" class="keyboard-button" id="e">e</button>
+                <button onclick="pressKey('r')" class="keyboard-button" id="r">r</button>
+                <button onclick="pressKey('t')" class="keyboard-button" id="t">t</button>
+                <button onclick="pressKey('y')" class="keyboard-button" id="y">y</button>
+                <button onclick="pressKey('u')" class="keyboard-button" id="u">u</button>
+                <button onclick="pressKey('i')" class="keyboard-button" id="i">i</button>
+                <button onclick="pressKey('o')" class="keyboard-button" id="o">o</button>
+                <button onclick="pressKey('p')" class="keyboard-button" id="p">p</button>
+            </div>
+            <div class="keyboard-row">
+                <div class="half-block"></div>
+                <button onclick="pressKey('a')" class="keyboard-button" id="a">a</button>
+                <button onclick="pressKey('s')" class="keyboard-button" id="s">s</button>
+                <button onclick="pressKey('d')" class="keyboard-button" id="d">d</button>
+                <button onclick="pressKey('f')" class="keyboard-button" id="f">f</button>
+                <button onclick="pressKey('g')" class="keyboard-button" id="g">g</button>
+                <button onclick="pressKey('h')" class="keyboard-button" id="h">h</button>
+                <button onclick="pressKey('j')" class="keyboard-button" id="j">j</button>
+                <button onclick="pressKey('k')" class="keyboard-button" id="k">k</button>
+                <button onclick="pressKey('l')" class="keyboard-button" id="l">l</button>
+                <div class="half-block"></div>
+            </div>
+            <div class="keyboard-row">
+                <button onclick="pressKey('z')" class="keyboard-button" id="z">z</button>
+                <button onclick="pressKey('x')" class="keyboard-button" id="x">x</button>
+                <button onclick="pressKey('c')" class="keyboard-button" id="c">c</button>
+                <button onclick="pressKey('v')" class="keyboard-button" id="v">v</button>
+                <button onclick="pressKey('b')" class="keyboard-button" id="b">b</button>
+                <button onclick="pressKey('n')" class="keyboard-button" id="n">n</button>
+                <button onclick="pressKey('m')" class="keyboard-button" id="m">m</button>
+                <button onclick="pressKey('backspace')" class="keyboard-button" id="backspace">&leftarrow;</button>
+                <button onclick="pressKey('enter')" class="keyboard-button" id="enter">&#8617;</button>
+            </div>
+        </div>
+        <div id="share-modal">
+            <div class="game-result">
+                <p class="game-over-text">The game has finished</p>
+                <p class="tile-layout">
+                    ⬜️⬜️⬜️⬜️⬜️<br>
+                    🟨🟨🟨🟨🟨<br>
+                    🟩🟩🟩🟩🟩<br>
+                    ⬜️⬜️⬜️⬜️⬜️<br>
+                    🟨🟨🟨🟨🟨<br>
+                    🟩🟩🟩🟩🟩<br>
+                </p>
+                <p class="secret-word-text">The secret word was: <span class="secret-word">words</span></p>
+                <p class="win-text">You guessed the word in <span class="score">3</span> tries!</p>
+                <p class="lose-text">You did not guess the word :(</p>
+            </div>
+            <div class="buttons">
+                <button class="replay-button">Play again</button>
+                <div class="share-buttons">
+                    <button class="telegram-share-button">Share
+                        <div class="game-icon share-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg">
+                                <path fill="currentColor"
+                                    d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92zM18 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM6 13c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm12 7.02c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z">
+                                </path>
+                            </svg>
+                        </div>
+                    </button>
+                    <button class="copy-button">Copy your score
+                        <div class="game-icon copy-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                                </path>
+                            </svg>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="overlay"></div>
+    </section>
+    <script src="main.js"></script>
+    <script src="https://telegram.org/js/games.js"></script>
+</body>
+
+</html>

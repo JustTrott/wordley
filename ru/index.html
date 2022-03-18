@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <link rel="stylesheet" href="main.css">
+    <link rel="icon" href="favicon.ico">
+    <title>Вордли</title>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <header id="header">
+        <h1 id="main-header">Вордли</h1>
+    </header>
+    <section id="content">
+        <div id="guide-modal">
+            <div class="modal-header">
+                <div class="description">
+                    <h2 class="main-heading">Как играть?</h2>
+                    <p>Угадайте <strong class="bold-uppercase">слово</strong> за шесть попыток</p>
+                    <p>Допускается использование только слов из пяти букв. Нажмите кнопку ввода, чтобы
+                        подтвердить.</p>
+                    <p>После каждой попытки, цвет плиток каждой буквы будет меняться, чтобы показать,
+                        насколько ваша догадка близка к загаданному слову.</p>
+                </div>
+                <button class="close-button">&times;</button>
+            </div>
+            <div class="examples">
+                <h2>Примеры</h2>
+                <div class="example-row">
+                    <div class="board-tile used-tile example-tile">г</div>
+                    <div class="board-tile used-tile example-tile">е</div>
+                    <div class="board-tile used-tile example-tile">н</div>
+                    <div class="board-tile used-tile example-tile">и</div>
+                    <div class="board-tile used-tile example-tile exact-letter">й</div>
+                </div>
+                <div class="example-description">Буква <span class="bold-uppercase">Й</span> есть в этом слове и в
+                    правильном месте.</div>
+                <div class="example-row">
+                    <div class="board-tile used-tile example-tile">к</div>
+                    <div class="board-tile used-tile example-tile">у</div>
+                    <div class="board-tile used-tile example-tile">б</div>
+                    <div class="board-tile used-tile example-tile has-letter">о</div>
+                    <div class="board-tile used-tile example-tile">к</div>
+                </div>
+                <div class="example-description">Буква <span class="bold-uppercase">о</span> есть в этом слове, но не в
+                    этом месте</div>
+                <div class="example-row">
+                    <div class="board-tile used-tile example-tile no-letter">п</div>
+                    <div class="board-tile used-tile example-tile">а</div>
+                    <div class="board-tile used-tile example-tile">л</div>
+                    <div class="board-tile used-tile example-tile">а</div>
+                    <div class="board-tile used-tile example-tile">ч</div>
+                </div>
+                <div class="example-description">Буквы <span class="bold-uppercase">п</span> нет в этом слове.
+                </div>
+            </div>
+        </div>
+        <div id="game-board"></div>
+        <div id="result-message"></div>
+        <div id="keyboard">
+            <div class="keyboard-row">
+                <button onclick="pressKey('й')" id="й" class="keyboard-button">й</button>
+                <button onclick="pressKey('ц')" id="ц" class="keyboard-button">ц</button>
+                <button onclick="pressKey('у')" id="у" class="keyboard-button">у</button>
+                <button onclick="pressKey('к')" id="к" class="keyboard-button">к</button>
+                <button onclick="pressKey('е')" id="е" class="keyboard-button">е</button>
+                <button onclick="pressKey('н')" id="н" class="keyboard-button">н</button>
+                <button onclick="pressKey('г')" id="г" class="keyboard-button">г</button>
+                <button onclick="pressKey('ш')" id="ш" class="keyboard-button">ш</button>
+                <button onclick="pressKey('щ')" id="щ" class="keyboard-button">щ</button>
+                <button onclick="pressKey('з')" id="з" class="keyboard-button">з</button>
+                <button onclick="pressKey('х')" id="х" class="keyboard-button">х</button>
+                <button onclick="pressKey('ъ')" id="ъ" class="keyboard-button">ъ</button>
+            </div>
+
+            <div class="keyboard-row">
+                <div class="half-block"></div>
+                <button onclick="pressKey('ф')" id="ф" class="keyboard-button">ф</button>
+                <button onclick="pressKey('ы')" id="ы" class="keyboard-button">ы</button>
+                <button onclick="pressKey('в')" id="в" class="keyboard-button">в</button>
+                <button onclick="pressKey('а')" id="а" class="keyboard-button">а</button>
+                <button onclick="pressKey('п')" id="п" class="keyboard-button">п</button>
+                <button onclick="pressKey('р')" id="р" class="keyboard-button">р</button>
+                <button onclick="pressKey('о')" id="о" class="keyboard-button">о</button>
+                <button onclick="pressKey('л')" id="л" class="keyboard-button">л</button>
+                <button onclick="pressKey('д')" id="д" class="keyboard-button">д</button>
+                <button onclick="pressKey('ж')" id="ж" class="keyboard-button">ж</button>
+                <button onclick="pressKey('э')" id="э" class="keyboard-button">э</button>
+                <div class="half-block"></div>
+            </div>
+
+            <div class="keyboard-row">
+                <div class="half-block"></div>
+                <button onclick="pressKey('я')" id="я" class="keyboard-button">я</button>
+                <button onclick="pressKey('ч')" id="ч" class="keyboard-button">ч</button>
+                <button onclick="pressKey('с')" id="с" class="keyboard-button">с</button>
+                <button onclick="pressKey('м')" id="м" class="keyboard-button">м</button>
+                <button onclick="pressKey('и')" id="и" class="keyboard-button">и</button>
+                <button onclick="pressKey('т')" id="т" class="keyboard-button">т</button>
+                <button onclick="pressKey('ь')" id="ь" class="keyboard-button">ь</button>
+                <button onclick="pressKey('б')" id="б" class="keyboard-button">б</button>
+                <button onclick="pressKey('ю')" id="ю" class="keyboard-button">ю</button>
+                <button onclick="pressKey('backspace')" class="keyboard-button" id="backspace">&leftarrow;</button>
+                <button onclick="pressKey('enter')" class="keyboard-button" id="enter">&#8617;</button>
+                <div class="half-block"></div>
+            </div>
+        </div>
+        <div id="share-modal">
+            <div class="game-result">
+                <h2 class="game-over-text">Игра была закончена</h2>
+                <p class="tile-layout">
+                    ⬜️⬜️⬜️⬜️⬜️<br>
+                    🟨🟨🟨🟨🟨<br>
+                    🟩🟩🟩🟩🟩<br>
+                    ⬜️⬜️⬜️⬜️⬜️<br>
+                    🟨🟨🟨🟨🟨<br>
+                    🟩🟩🟩🟩🟩<br>
+                </p>
+                <p class="secret-word-text">Секретное слово было: <span class="secret-word">слово</span></p>
+                <p class="win-text">Вам понадобилось попыток: <span class="score">3</span></p>
+                <p class="lose-text">Вы не угадали слово :(</p>
+            </div>
+            <div class="buttons">
+                <button class="replay-button">Играть снова</button>
+                <div class="share-buttons">
+                    <button class="telegram-share-button">Поделиться
+                        <div class="game-icon share-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg">
+                                <path fill="currentColor"
+                                    d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92zM18 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM6 13c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm12 7.02c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z">
+                                </path>
+                            </svg>
+                        </div>
+                    </button>
+                    <button class="copy-button">Скопировать результат
+                        <div class="game-icon copy-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                                </path>
+                            </svg>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="overlay"></div>
+    </section>
+    <script src="main.js"></script>
+    <script src="https://telegram.org/js/games.js"></script>
+</body>
+
+</html>
